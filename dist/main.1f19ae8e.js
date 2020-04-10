@@ -124,17 +124,15 @@ console.log(str.length);
 var n = 0; //高手一般用setTimeout配合递归来是实现setInterval，因为可以添加条件随时停止
 
 var step = function step() {
-  if (n >= str.length) {
-    return;
+  if (n < str.length) {
+    n += 1;
+    console.log(n);
+    demo.innerHTML = str.substring(0, n);
+    console.log("完成打印");
+    setTimeout(function () {
+      step();
+    }, 500);
   }
-
-  n += 1;
-  console.log(n);
-  demo.innerHTML = str.substring(0, n);
-  console.log("完成打印");
-  setTimeout(function () {
-    step();
-  }, 500);
 };
 
 step();
