@@ -120,12 +120,24 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 })({"main.js":[function(require,module,exports) {
 var demo = document.querySelector(".demo1");
 var str = "你好，我是一名前端新人";
-var n = 1; //高手一般用setTimeout配合递归来是实现setInterval，因为可以添加条件随时停止
+console.log(str.length);
+var n = 0; //高手一般用setTimeout配合递归来是实现setInterval，因为可以添加条件随时停止
 
-setInterval(function () {
-  demo.innerHTML = str.substring(0, n);
+var step = function step() {
+  if (n >= str.length) {
+    return;
+  }
+
   n += 1;
-}, 500);
+  console.log(n);
+  demo.innerHTML = str.substring(0, n);
+  console.log("完成打印");
+  setTimeout(function () {
+    step();
+  }, 500);
+};
+
+step();
 },{}],"../../AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
