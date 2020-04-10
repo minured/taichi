@@ -119,7 +119,8 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   return newRequire;
 })({"main.js":[function(require,module,exports) {
 var demo = document.querySelector(".demo1");
-var str = "你好，我是一名前端新人";
+var str = "\n\u4F60\u597D\uFF0C\u6211\u662F\u4E00\u540D\u524D\u7AEF\u65B0\u4EBA\uFF01\n\u4E0B\u9762\u662F\u6548\u679C\u7684\u5B9E\u73B0\u4EE3\u7801\uFF1A\nlet demo = document.querySelector(\".demo1\");\nlet str = \"\u4F60\u597D\uFF0C\u6211\u662F\u4E00\u540D\u524D\u7AEF\u65B0\u4EBA\";\nlet n = 0;\nlet step = () => {\n    if (n < str.length) {\n        n += 1;\n        demo.innerHTML = str.substring(0, n)\n        setTimeout(() => {\n            step()\n        }, 500)\n    }\n}\nstep()";
+str = str.replace(/\n/g, "<br>");
 console.log(str.length);
 var n = 0; //高手一般用setTimeout配合递归来是实现setInterval，因为可以添加条件随时停止
 
@@ -128,10 +129,9 @@ var step = function step() {
     n += 1;
     console.log(n);
     demo.innerHTML = str.substring(0, n);
-    console.log("完成打印");
     setTimeout(function () {
       step();
-    }, 500);
+    }, 30);
   }
 };
 
