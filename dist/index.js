@@ -117,43 +117,74 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"main.js":[function(require,module,exports) {
-var html = document.querySelector(".html");
-var style = document.querySelector(".style");
-var draw = document.querySelector(".draw");
-var str = "/*\u4F60\u597D\uFF0C\u6211\u662F\u4E00\u540D\u524D\u7AEF\u65B0\u4EBA\u3002\n\u4E0B\u9762\u5F00\u59CB\u753B\u4E00\u4E2A\u592A\u6781\uFF1A*/\n\n* {\n    margin: 0;\n    padding: 0;\n    box-sizing: border-box;\n    font-size: 16px;\n}\n.html {\n    word-break: break-all; \n    padding: 10px;\n\n}\n\n/*\u65E0\u6781\u751F\u592A\u6781*/\n\n.draw {\n    border: 1px solid black;\n    width: 300px;\n    height: 300px;\n    border-radius: 50%;\n    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);\n    border: none;\n    background: linear-gradient(90deg, rgba(0,0,0,1) 50%, rgba(255,255,255,1) 50%);\n}\n\n/*\u592A\u6781\u751F\u4E24\u4EEA*/\n\n.draw::before, .draw::after {\n    content: \"\";\n    display: block;\n    width: 150px;\n    height: 150px;\n    border: 1px solid black;\n    position: absolute; \n    left: 0;\n    left: 50%;\n    transform: translateX(-50%);\n    border-radius: 50%;\n    border: none;\n}\n.draw::before {\n    top: 0;\n    background: radial-gradient(circle, rgba(255,255,255,1) 25%, rgba(0,0,0,1) 25%);\n}\n.draw::after {\n    bottom: 0;\n    background: radial-gradient(circle, rgba(0,0,0,1) 25%, rgba(255,255,255,1) 25%);   \n}\n/*\u4E24\u4EEA\u751F\u56DB\u8C61\uFF0C\u56DB\u8C61\u751F\u516B\u5366*/\n\n.draw {\n    transition: 1.5s all;\n    transform: translateX(-50%) rotate(450deg);   \n}\n/* \u5DF4\u5566\u5566\u80FD\u91CF---\u6728\u62C9\u62C9---\u5F00\uFF01*/\n";
-console.log("\u5B57\u7B26\u957F\u5EA6\uFF1A".concat(str.length));
-var str2 = "";
-var n = 0; //高手一般用setTimeout配合递归来是实现setInterval，因为可以添加条件随时停止
+})({"../../../AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
 
-var step = function step() {
-  //判断长度与更改字符
-  if (n < str.length) {
-    //更改字符
-    if (str[n] === "\n") {
-      str2 += "<br>";
-    } else if (str[n] === " ") {
-      str2 += "&nbsp";
-    } else {
-      str2 += str[n];
-    } //替换页面字符
-
-
-    console.log(str2);
-    html.innerHTML = str2;
-    style.innerHTML = str.substring(0, n + 1);
-    n += 1;
-    window.scrollBy(0, 9999);
-    html.scrollBy(0, 9999); //递归
-
-    setTimeout(function () {
-      step();
-    }, 20);
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
   }
-};
 
-step();
-},{}],"../../../AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../../../AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../../../AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/bundle-url.js"}],"../../../AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -357,5 +388,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js","main.js"], null)
-//# sourceMappingURL=/main.1f19ae8e.js.map
+},{}]},{},["../../../AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js"], null)
+//# sourceMappingURL=/index.js.map
