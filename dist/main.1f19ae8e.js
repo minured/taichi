@@ -140,7 +140,8 @@ var step = function step() {
 
 
     html.innerHTML = str2;
-    style.innerHTML = str.substring(0, n);
+    console.log(n);
+    style.innerHTML = str.substring(0, n + 1);
     n += 1;
     window.scrollBy(0, 9999);
     html.scrollBy(0, 9999); //递归
@@ -180,7 +181,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54385" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55666" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
