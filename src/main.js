@@ -84,9 +84,8 @@ let step = () => {
         }
 
         //替换页面字符
-        console.log(str2)
         html.innerHTML = str2
-        style.innerHTML = str.substring(0, n+1)
+        style.innerHTML = str.substring(0, n)
         n += 1
         window.scrollBy(0, 9999)
         html.scrollBy(0, 9999 )

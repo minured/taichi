@@ -139,9 +139,8 @@ var step = function step() {
     } //替换页面字符
 
 
-    console.log(str2);
     html.innerHTML = str2;
-    style.innerHTML = str.substring(0, n + 1);
+    style.innerHTML = str.substring(0, n);
     n += 1;
     window.scrollBy(0, 9999);
     html.scrollBy(0, 9999); //递归
@@ -181,7 +180,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53916" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54385" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
