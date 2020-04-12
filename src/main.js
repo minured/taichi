@@ -15,7 +15,6 @@ let str = `/*你好，我是一名前端新人。
 .html {
     word-break: break-all; 
     padding: 10px;
-
 }
 
 /*无极生太极*/
