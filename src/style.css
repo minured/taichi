@@ -6,10 +6,29 @@
 }
 .draw {
     position: fixed;
-    left: 62%;
+    left: 67%;
     top: 20px;
     transform: translateX(-50%);
+
 }
+.rotateInfinite {
+    animation: rotateAll 2s linear infinite;
+    animation-play-state: paused;
+}
+.animationStart:hover,
+.animationStart:focus {
+    animation-play-state: running;
+      
+}
+@keyframes rotateAll {
+    0% {
+      transform: translateX(-50%) rotate(450deg);
+    } 
+    100% {
+      transform: translateX(-50%) rotate(810deg);
+    }
+    
+  }
 
 iframe {
     display: none;
@@ -21,13 +40,9 @@ iframe {
     bottom: -60px;
     transform: rotateY(180deg);
     z-index: -1;
+    opacity: 0.8;
 }
 
-@media (max-width: 1200px) {
-    .bg > img {
-        width:400px;
-    }
-}
 
 @media (max-width: 500px) {
     .html {
@@ -44,7 +59,5 @@ iframe {
         left: 50%;
         transform: translateX(-50%);   
     }
-    .bg > img {
-        width: 250px;
-    }
+    
 }

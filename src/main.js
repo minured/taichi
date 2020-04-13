@@ -54,11 +54,13 @@ let str = `/*你好，我是一名前端新人。
 }
 /*两仪生四象，四象生八卦*/
 
+
 .draw {
     transition: 1.5s all;
     transform: translateX(-50%) rotate(450deg);   
 }
 /* 巴啦啦能量---木拉拉---开！*/
+
 `
 
 
@@ -68,11 +70,21 @@ let str2 = ""
 
 let n = 0;
 
+
+
 //高手一般用setTimeout配合递归来是实现setInterval，因为可以添加条件随时停止
 let step = () => {
-    
+
     //判断长度与更改字符
     if(n < str.length) {
+
+        //当太极开始旋转
+        if(n === str.length - 1){
+            setTimeout(() => {
+                console.log("添加类")
+                draw.classList += " rotateInfinite animationStart"
+            }, 1500)   
+        }
 
         //更改字符
         if (str[n] === "\n") {
@@ -94,7 +106,7 @@ let step = () => {
         //递归
         setTimeout(() => {
             step()
-        }, 20)
+        }, 0)
     }
 
 }
