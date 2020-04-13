@@ -62,6 +62,7 @@ let str = `/*你好，我是一名前端新人。
 `
 
 
+
 console.log(`字符长度：${str.length}`)
 let str2 = ""
 
@@ -98,6 +99,7 @@ let step = () => {
 
 }
 step()
+
 
 
 

@@ -1,0 +1,2 @@
+*{margin:0;padding:0;box-sizing:border-box;font-family:Fira Code,Consolas,Courier New,Courier,Monaco}.draw{position:fixed;left:62%;top:20px;transform:translateX(-50%)}iframe{display:none}.bg{position:fixed;right:0;bottom:-60px;transform:rotateY(180deg);z-index:-1}@media (max-width:1200px){.bg>img{width:400px}}@media (max-width:500px){.html{position:relative;left:0;top:50vh;height:50vh;overflow:auto}.draw{position:fixed;left:0;top:10px;left:50%;transform:translateX(-50%)}.bg>img{width:250px}}
+/*# sourceMappingURL=style.914d29dd.css.map */

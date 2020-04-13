@@ -6,10 +6,29 @@
 }
 .draw {
     position: fixed;
-    left: 70%;
+    left: 62%;
     top: 20px;
     transform: translateX(-50%);
 }
+
+iframe {
+    display: none;
+}
+
+.bg {
+    position: fixed;
+    right: 0;
+    bottom: -60px;
+    transform: rotateY(180deg);
+    z-index: -1;
+}
+
+@media (max-width: 1200px) {
+    .bg > img {
+        width:400px;
+    }
+}
+
 @media (max-width: 500px) {
     .html {
         position:relative;
@@ -24,5 +43,8 @@
         top: 10px;
         left: 50%;
         transform: translateX(-50%);   
+    }
+    .bg > img {
+        width: 250px;
     }
 }
